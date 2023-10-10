@@ -1,8 +1,6 @@
-# Configs file
-Host *
-    SendEnv LANG LC_*
-    HashKnownHosts yes
-    GSSAPIAuthentication yes
-    GSSAPIDelegateCredentials no
+# Configuration for ALX School Server 100.26.171.8
+Host school-server
+    Hostname 100.26.171.8
+    User ubuntu
     IdentityFile ~/.ssh/school
     PasswordAuthentication no
