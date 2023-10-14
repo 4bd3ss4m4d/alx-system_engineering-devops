@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
-#Transfer a file to your server
-if [ $# -lt 3 ]; then
-    echo "Usage: ${0#./} PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
+# Transfer a file to a Remote server
+
+# Check if the correct number of parameters is provided
+if [ "$#" -lt 4 ]; then
+    echo "Usage: 0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
     exit 1
 fi
 
-LOCAL_FILE=$1
-IP=$2
+# Extract parameters
+FILE_PATH=$1
+SERVER_IP=$2
 USERNAME=$3
-PRIVATE_KEY=$4
-if [ $# -eq 3 ]; then
-    scp -o StrictHostKeyChecking=no "$LOCAL_FILE" "$USERNAME@$IP":~/
-else
-    scp -o StrictHostKeyChecking=no -i "$PRIVATE_KEY" "$LOCAL_FILE" "$USERNAME@$IP":~/
-fi
+SSH_KEY=$4
+
+# Transfer file using scp with strict host key checking disabled
+scp -o StrictHostKeyChecking=no -i "$SSH_KEY" "$FILE_PATH" "$USERNAME"@"$SERVER_IP":~/
