@@ -1,35 +1,9 @@
 #!/usr/bin/env bash
-# Install nginx web server
-
-# Update the package list on the system
-sudo apt -y update
-
-# Install nginx
-sudo apt -y install nginx
-
-# Create a custom HTML file with "Hello World!" for default website
+#Install nginx web server and Redirection
+sudo apt-get -y update
+sudo apt-get -y install nginx
 sudo sh -c 'echo "Hello World!" > /var/www/html/index.nginx-debian.html'
-
-# Add a new location /redirect_me to perform a 301 permanent redirect to the specified YouTube URL
-sudo sed -i '/^}$/i \ \n\tlocation \/redirect_me {\n\t\trewrite ^ https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;\n\t}' /etc/nginx/sites-available/default
-
-# Create Custom Error 404 HTML file
-echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/custom_404.html
-
-# Create Named location @404 for for 404 errors
-sudo sed -i '/^}$/i \ \n\tlocation @custom_404 {\n\t\trewrite ^ /custom_404.html break;\n\t}' /etc/nginx/sites-available/default
-
-# Replace =404 if it exists with @custom_404
-sudo sed -i 's/=404/@custom_404/g' /etc/nginx/sites-available/default
-
-# Define Custom error for 404
-sudo sed -i '/^}$/i \ \n\terror_page 404 /custom_404.html;' /etc/nginx/sites-available/default
-
-# Configure the location and settings for the custom 404 page
-sudo sed -i '/^}$/i \ \n\tlocation = /custom_404.html {\n\t\troot /usr/share/nginx/html;\n\t\tinternal;\n\t}' /etc/nginx/sites-available/default
-
-# Start automatically nginxt at boot
-sudo systemctl enable nginx
-
-# Reload nginx
-sudo systemctl reload nginx
+sudo sed -i '/^}$/i \ \n\tlocation \/redirect_me {return 301 https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4;}' /etc/nginx/sites-available/default
+sudo sed -i '/^}$/i \ \n\tlocation @404 {return 404 "Ceci n'\''est pas une page\\n";}' /etc/nginx/sites-available/default
+sudo sed -i 's/=404/@404/g' /etc/nginx/sites-available/default
+sudo service nginx start
