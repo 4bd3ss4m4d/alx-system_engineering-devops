@@ -21,4 +21,4 @@ if __name__ == "__main__":
     with open("{}.csv".format(userid), "w", newline="") as csvfile:
         csv_writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
         [csv_writer.writerow([userid, user_name, t.get("completed"),
-                              t.get("title")]) for t in todo_list]
+                             t.get("title")]) for t in todo_list]
