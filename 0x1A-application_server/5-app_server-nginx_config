@@ -1,0 +1,145 @@
+server {
+    listen 80;
+    listen [::]:80 default_server;
+    add_header X-Served-By "348734-web-01";
+    root /etc/nginx/html;
+    index index.html index.htm;
+    root /var/www/html;
+
+    server_name _;
+
+    location / {
+        proxy_pass http://127.0.0.1:5003;
+        include proxy_params;
+    }
+
+    location /static/ {
+        alias /path/to/AirBnB_clone_v4/web_dynamic/static/;
+    }
+
+    location /hbnb_static {
+        alias /path/to/AirBnB_clone_v4/web_dynamic/static/;
+    }
+
+    location /static/scripts/2-hbnb.js {
+        alias /path/to/AirBnB_clone_v4/web_dynamic/static/scripts/2-hbnb.js;
+    }
+
+    location /hbnb_static/scripts/2-hbnb.js {
+        alias /path/to/AirBnB_clone_v4/web_dynamic/static/scripts/2-hbnb.js;
+    }
+
+    location /hbnb_static/styles {
+        alias /path/to/AirBnB_clone_v4/web_dynamic/static/styles/;
+    }
+
+    location /hbnb_static/images {
+        alias /path/to/AirBnB_clone_v4/web_dynamic/static/images/;
+    }
+
+    location /hbnb_static/fonts {
+        alias /path/to/AirBnB_clone_v4/web_dynamic/static/fonts/;
+    }
+
+    location /hbnb_static/4-icons.woff2 {
+        alias /path/to/AirBnB_clone_v4/web_dynamic/static/4-icons.woff2;
+    }
+
+    location /hbnb_static/favicon.ico {
+        alias /path/to/AirBnB_clone_v4/web_dynamic/static/favicon.ico;
+    }
+    
+    location /hbnb_static/social-media.png {
+        alias /path/to/AirBnB_clone_v4/web_dynamic/static/social-media.png;
+    }
+
+    location /hbnb_static/place.png {
+        alias /path/to/AirBnB_clone_v4/web_dynamic/static/place.png;
+    }
+
+    location /hbnb_static/logo.png {
+        alias /path/to/AirBnB_clone_v4/web_dynamic/static/logo.png;
+    }
+
+    location /hbnb_static/logo_white.png {
+        alias /path/to/AirBnB_clone_v4/web_dynamic/static/logo_white.png;
+    }
+
+    location /hbnb_static/black_logo.png {
+        alias /path/to/AirBnB_clone_v4/web_dynamic/static/black_logo.png;
+    }
+
+    location /hbnb_static/white_logo.png {
+        alias /path/to/AirBnB_clone_v4/web_dynamic/static/white_logo.png;
+    }
+
+    location /hbnb_static/white_logo_square.png {
+        alias /path/to/AirBnB_clone_v4/web_dynamic/static/white_logo_square.png;
+    }
+    
+    location /hbnb_static/black_logo_square.png {
+        alias /path/to/AirBnB_clone_v4/web_dynamic/static/black_logo_square.png;
+    }
+    
+    location /hbnb_static/hotels.jpg {
+        alias /path/to/AirBnB_clone_v4/web_dynamic/static/hotels.jpg;
+    }
+    
+    location /hbnb_static/hotels.webp {
+        alias /path/to/AirBnB_clone_v4/web_dynamic/static/hotels.webp;
+    }
+
+    location /hbnb_static/hotel.jpg {
+        alias /path/to/AirBnB_clone_v4/web_dynamic/static/hotel.jpg;
+    }
+
+    location /hbnb_static/hotel.webp {
+        alias /path/to/AirBnB_clone_v4/web_dynamic/static/hotel.webp;
+    }
+
+    location /hbnb_static/apt.jpg {
+        alias /path/to/AirBnB_clone_v4/web_dynamic/static/apt.jpg;
+    }
+
+    location /hbnb_static/apt.webp {
+        alias /path/to/AirBnB_clone_v4/web_dynamic/static/apt.webp;
+    }
+
+    location /hbnb_static/avatar.jpg {
+        alias /path/to/AirBnB_clone_v4/web_dynamic/static/avatar.jpg;
+    }
+
+    location /hbnb_static/avatar.webp {
+        alias /path/to/AirBnB_clone_v4/web_dynamic/static/avatar.webp;
+    }
+
+    location /hbnb_static/gplus.png {
+        alias /path/to/AirBnB_clone_v4/web_dynamic/static/gplus.png;
+    }
+
+    location /hbnb_static/facebook.png {
+        alias /path/to/AirBnB_clone_v4/web_dynamic/static/facebook.png;
+    }
+
+    location /hbnb_static/twitter.png {
+        alias /path/to/AirBnB_clone_v4/web_dynamic/static/twitter.png;
+    }
+    
+    location /hbnb_static/contact_us {
+        alias /path/to/AirBnB_clone_v4/web_dynamic/static/contact_us/;
+    }
+
+    location /hbnb_static/contact_us_map.jpg {
+        alias /path/to/AirBnB_clone_v4/web_dynamic/static/contact_us_map.jpg;
+    }
+
+    location /hbnb_static/contact_us_map.webp {
+        alias /path/to/AirBnB_clone_v4/web_dynamic/static/contact_us_map.webp;
+    }
+
+    location /hbnb_static/static_map.jpg {
+        alias /path/to/AirBnB_clone_v4/web_dynamic/static/static_map.jpg;
+    }
+
+    location /hbnb_static/static_map.webp {
+       
